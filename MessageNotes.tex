@@ -1,0 +1,67 @@
+\documentclass{article}
+
+% Packages for additional functionality
+\usepackage{enumitem}   % Customize itemize/enumerate
+\usepackage{lipsum}     % For generating dummy text, you can remove this in your actual document
+\usepackage[margin=1in]{geometry}   % Set margins to 1 inch
+
+% Define a new environment for outlining
+\newenvironment{notesoutline}{
+  \begin{itemize}[label=--,left=1em,labelsep=1em]
+}{
+  \end{itemize}
+}
+
+\renewcommand{\thesubsection}{\Roman{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\renewcommand{\theparagraph}{\alph{paragraph}}
+
+\begin{document}
+
+\title{Message Number | Title}
+\author{Speaker | speaker name\thanks{Notes by notetaker}}
+\date{\today}
+
+\maketitle
+
+\subsubsection*{Subsub Point}
+\lipsum[1]
+
+\section*{Introduction}
+\lipsum[1]
+
+\section*{Outline}
+
+\subsection*{I. Point 1}
+\lipsum[1]
+\begin{notesoutline}
+  \item[A.] Subpoint 1.1
+  \item[B.] Subpoint 1.2
+\end{notesoutline}
+
+\subsection*{II. Point 2}
+\begin{notesoutline}
+  \item[A.] 
+    \lipsum[1]
+    \begin{notesoutline}
+      \item[1.] 
+        \lipsum[5]
+    \end{notesoutline}
+  \item[B.] 
+    \lipsum[2] \\ \\
+    \lipsum[1]
+\end{notesoutline}
+
+\subsubsection*{1. Subsub Point}
+\begin{notesoutline}
+  \paragraph{a.} Subsubsub Point 1
+  \lipsum[3]
+  
+  \paragraph{b.} Subsubsub Point 2
+  \lipsum[4]
+\end{notesoutline}
+
+\section*{Conclusion}
+\lipsum[2]
+
+\end{document}
