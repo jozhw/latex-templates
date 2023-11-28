@@ -4,8 +4,11 @@
 \usepackage{enumitem}   % Customize itemize/enumerate
 \usepackage{lipsum}     % For generating dummy text, you can remove this in your actual document
 \usepackage[margin=1in]{geometry}   % Set margins to 1 inch
+\usepackage{fancyhdr}
+\usepackage{datetime}
+\usepackage{sectsty}
 
-% Define a new environment for outlining
+% Define a new environment for outlining with consistent indentation
 \newenvironment{notesoutline}{
   \begin{itemize}[label=--,left=1em,labelsep=1em]
 }{
@@ -16,13 +19,28 @@
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
 \renewcommand{\theparagraph}{\alph{paragraph}}
 
+% Define the fancy page style
+\fancypagestyle{topbar}{
+  \fancyhf{}  % Clear header and footer
+  \renewcommand{\headrulewidth}{0.4pt}  % Header rule
+  \fancyhead[L]{Notes | Your Name}  % Left header content
+  \fancyhead[R]{\today}  % Right header content (date and time)
+}
+
+% Align only the titles of subsections to the right using sectsty
+\sectionfont{\centering}
+\subsubsectionfont{\raggedleft\bfseries}
+
+
 \begin{document}
 
 \title{Message Number | Title}
-\author{Speaker | speaker name\thanks{Notes by notetaker}}
+\author{Speaker | speaker name}
 \date{\today}
 
 \maketitle
+
+\thispagestyle{topbar}  % Manually set the page style for the title page
 
 \subsubsection*{Subsub Point}
 \lipsum[1]
@@ -35,21 +53,22 @@
 \subsection*{I. Point 1}
 \lipsum[1]
 \begin{notesoutline}
-  \item[A.] Subpoint 1.1
-  \item[B.] Subpoint 1.2
+  \item[A.]
+    .
+  \item[B.]
+    .
 \end{notesoutline}
 
 \subsection*{II. Point 2}
 \begin{notesoutline}
   \item[A.] 
-    \lipsum[1]
+    .
     \begin{notesoutline}
       \item[1.] 
-        \lipsum[5]
+        .
     \end{notesoutline}
   \item[B.] 
-    \lipsum[2] \\ \\
-    \lipsum[1]
+    .
 \end{notesoutline}
 
 \subsubsection*{1. Subsub Point}
